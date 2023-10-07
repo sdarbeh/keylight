@@ -1,0 +1,237 @@
+/**
+* Config to build atomic flex utils
+*/
+$flex-properties: (
+  (
+    property: flex-direction,
+    classes: (
+      (
+        classname: flex-row,
+        value: row,
+      ),
+      (
+        classname: flex-column,
+        value: column,
+      ),
+      (
+        classname: flex-column-reverse,
+        value: column-reverse,
+      ),
+      (
+        classname: flex-row-reverse,
+        value: row-reverse,
+      ),
+    ),
+  ),
+  (
+    property: flex-wrap,
+    classes: (
+      (
+        classname: flex-wrap,
+        value: wrap,
+      ),
+      (
+        classname: flex-no-wrap,
+        value: nowrap,
+      ),
+    ),
+  ),
+  (
+    property: align-items,
+    classes: (
+      (
+        classname: items-center,
+        value: center,
+      ),
+      (
+        classname: items-start,
+        value: flex-start,
+      ),
+      (
+        classname: items-end,
+        value: flex-end,
+      ),
+      (
+        classname: items-stretch,
+        value: stretch,
+      ),
+    ),
+  ),
+  (
+    property: align-content,
+    classes: (
+      (
+        classname: content-center,
+        value: center,
+      ),
+      (
+        classname: content-start,
+        value: flex-start,
+      ),
+      (
+        classname: content-end,
+        value: flex-end,
+      ),
+      (
+        classname: content-stretch,
+        value: stretch,
+      ),
+      (
+        classname: content-between,
+        value: space-between,
+      ),
+      (
+        classname: content-around,
+        value: space-around,
+      ),
+      (
+        classname: content-evenly,
+        value: space-evenly,
+      ),
+    ),
+  ),
+  (
+    property: justify-content,
+    classes: (
+      (
+        classname: justify-center,
+        value: center,
+      ),
+      (
+        classname: justify-start,
+        value: flex-start,
+      ),
+      (
+        classname: justify-end,
+        value: flex-end,
+      ),
+      (
+        classname: justify-stretch,
+        value: stretch,
+      ),
+      (
+        classname: justify-between,
+        value: space-between,
+      ),
+      (
+        classname: justify-around,
+        value: space-around,
+      ),
+      (
+        classname: justify-evenly,
+        value: space-evenly,
+      ),
+      (
+        classname: justify-left,
+        value: left,
+      ),
+      (
+        classname: justify-right,
+        value: right,
+      ),
+    ),
+  ),
+  (
+    property: flex-basis,
+    classes: (
+      (
+        classname: flex-basis-0,
+        value: 0%,
+      ),
+      (
+        classname: flex-basis-40,
+        value: 40%,
+      ),
+      (
+        classname: flex-basis-50,
+        value: 50%,
+      ),
+      (
+        classname: flex-basis-60,
+        value: 60%,
+      ),
+      (
+        classname: flex-basis-80,
+        value: 80%,
+      ),
+      (
+        classname: flex-basis-100,
+        value: 100%,
+      ),
+    ),
+  ),
+  (
+    property: flex-shrink,
+    classes: (
+      (
+        classname: flex-shrink-0,
+        value: 0,
+      ),
+      (
+        classname: flex-shrink-1,
+        value: 1,
+      ),
+      (
+        classname: flex-shrink-2,
+        value: 2,
+      ),
+      (
+        classname: flex-shrink-5,
+        value: 5,
+      ),
+    ),
+  ),
+  (
+    property: flex-grow,
+    classes: (
+      (
+        classname: flex-grow-0,
+        value: 0,
+      ),
+      (
+        classname: flex-grow-1,
+        value: 1,
+      ),
+      (
+        classname: flex-grow-2,
+        value: 2,
+      ),
+      (
+        classname: flex-grow-5,
+        value: 5,
+      ),
+    ),
+  ),
+  (
+    property: align-self,
+    classes: (
+      (
+        classname: self-center,
+        value: center,
+      ),
+      (
+        classname: self-start,
+        value: flex-start,
+      ),
+      (
+        classname: self-end,
+        value: flex-end,
+      ),
+      (
+        classname: self-stretch,
+        value: stretch,
+      ),
+    ),
+  )
+);
+
+// generate base classes without breakpoints
+@include generate-base-classes-from-property-list($flex-properties);
+
+.no-shrink {
+  flex-shrink: 0;
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}

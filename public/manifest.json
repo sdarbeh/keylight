@@ -1,0 +1,10 @@
+{
+  "short_name": "Keylight",
+  "name": "Keylight by Goodridge",
+  "icons": [],
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "theme_color": "#FFCFA8",
+  "background_color": "#000000"
+}

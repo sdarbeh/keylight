@@ -1,0 +1,63 @@
+/**
+* Config to build atomic display utils
+*/
+$display-properties: (
+  (
+    property: display,
+    classes: (
+      (
+        classname: display-none,
+        value: none,
+      ),
+      (
+        classname: display-block,
+        value: block,
+      ),
+      (
+        classname: display-flex,
+        value: flex,
+      ),
+      (
+        classname: display-inline-flex,
+        value: inline-flex,
+      ),
+      (
+        classname: display-grid,
+        value: grid,
+      ),
+    ),
+  ),
+  (
+    property: grid-template-columns,
+    classes: (
+      (
+        classname: grid-cols-1,
+        value: repeat(1, 1fr),
+      ),
+      (
+        classname: grid-cols-2,
+        value: repeat(2, 1fr),
+      ),
+      (
+        classname: grid-cols-3,
+        value: repeat(3, 1fr),
+      ),
+      (
+        classname: grid-cols-4,
+        value: repeat(4, 1fr),
+      ),
+    ),
+  ),
+  (
+    property: opacity,
+    classes: (
+      (
+        classname: opacity-disabled,
+        value: var(--opacity-disabled),
+      ),
+    ),
+  )
+);
+
+// generate base classes without breakpoints, e.g. .display-none
+@include generate-base-classes-from-property-list($display-properties);

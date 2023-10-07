@@ -1,0 +1,123 @@
+// Atomic CSS utility classes
+// Creates classes that can be used for spacing and layout such as margin and padding
+//
+// .m0.m1.m2.m3.m4.m5.m6.m7.m8.m9.mv0.mv1.mv2.mv3.mv4.mv5.mv6.mv7.mv8.mv9.mh0.mh1.mh2.mh3.mh4.mh5.mh6.mh7.mh8.mh9
+// .mt0.mt1.mt2.mt3.mt4.mt5.mt6.mt7.mt8.mt9.mr0.mr1.mr2.mr3.mr4.mr5.mr6.mr7.mr8.mr9
+// .mb0.mb1.mb2.mb3.mb4.mb5.mb6.mb7.mb8.mb9.mt0.mt1.mt2.mt3.mt4.mt5.mt6.mt7.mt8.mt9
+//
+// .p0.p1.p2.p3.p4.p5.p6.p7.p8.p9.pv0.pv1.pv2.pv3.pv4.pv5.pv6.pv7.pv8.pv9.ph0.ph1.ph2.ph3.ph4.ph5.ph6.ph7.ph8.ph9
+// .pt0.pt1.pt2.pt3.pt4.pt5.pt6.pt7.pt8.pt9.pr0.pr1.pr2.pr3.pr4.pr5.pr6.pr7.pr8.pr9
+// .pb0.pb1.pb2.pb3.pb4.pb5.pb6.pb7.pb8.pb9.pt0.pt1.pt2.pt3.pt4.pt5.pt6.pt7.pt8.pt9
+//
+// These are shorthand for utility classes that can be used to apply a single layout style to an element
+// First letter is margin or padding, m = margin and p = padding
+// Second letter is direction v = vertical (top and bottom), h = horizontal (left and right), t = top, r = right,
+// b = bottom, l = left
+//
+// mr4 = margin-right: --item-size-4, pt2 = padding-top: --item-size-2
+//
+// The lack of a second letter is all p1 = padding: --item-size-1
+
+$item-spacers: (
+  (
+    prefix: m,
+    attributes: (
+      margin,
+    ),
+  ),
+  (
+    prefix: mv,
+    attributes: (
+      margin-top,
+      margin-bottom,
+    ),
+  ),
+  (
+    prefix: mh,
+    attributes: (
+      margin-right,
+      margin-left,
+    ),
+  ),
+  (
+    prefix: mt,
+    attributes: (
+      margin-top,
+    ),
+  ),
+  (
+    prefix: mr,
+    attributes: (
+      margin-right,
+    ),
+  ),
+  (
+    prefix: mb,
+    attributes: (
+      margin-bottom,
+    ),
+  ),
+  (
+    prefix: ml,
+    attributes: (
+      margin-left,
+    ),
+  ),
+  (
+    prefix: p,
+    attributes: (
+      padding,
+    ),
+  ),
+  (
+    prefix: pv,
+    attributes: (
+      padding-top,
+      padding-bottom,
+    ),
+  ),
+  (
+    prefix: ph,
+    attributes: (
+      padding-right,
+      padding-left,
+    ),
+  ),
+  (
+    prefix: pt,
+    attributes: (
+      padding-top,
+    ),
+  ),
+  (
+    prefix: pr,
+    attributes: (
+      padding-right,
+    ),
+  ),
+  (
+    prefix: pb,
+    attributes: (
+      padding-bottom,
+    ),
+  ),
+  (
+    prefix: pl,
+    attributes: (
+      padding-left,
+    ),
+  )
+);
+
+@each $item-spacer in $item-spacers {
+  $prefix: map-get($item-spacer, prefix);
+  $attributes: map-get($item-spacer, attributes);
+
+  @for $i from 0 through 9 {
+    .#{$prefix}#{$i} {
+      @each $attribute in $attributes {
+        #{$attribute}: var(--item-size-#{$i});
+      }
+    }
+  }
+}

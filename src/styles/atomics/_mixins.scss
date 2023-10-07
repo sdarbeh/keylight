@@ -1,0 +1,42 @@
+/**
+* Generate base util classes with no breakpoint rules
+* Accepts a list of properties to generate classes from
+* Each element in a property list have following schema:
+* - `property`: CSS property to use in each generated class
+* - `classes`: list of class configs to build classes for, each with `classname` to use in selector and `value` to set as value of `property`
+* Best practice: use these base classes as default styles before any breakpoint classes are applied
+* Optional $suffix arg will be appended to class names, e.g. to generate breakpoint classes
+*/
+@mixin generate-base-classes-from-property-list($property-list, $suffix: '') {
+  @each $property-item in $property-list {
+    $property: map-get($property-item, property);
+    $classes: map-get($property-item, classes);
+
+    @if not $property or not $classes {
+      @error 'Please ensure every property element in your property list has both `property` and `classes` set.';
+    }
+
+    @each $class-to-generate in $classes {
+      $classname: map-get($class-to-generate, classname);
+      $value: map-get($class-to-generate, value);
+      $suffix-separator: '';
+
+      // stylelint-disable max-nesting-depth
+      @if not $classname or not $value {
+        @error 'Please ensure each class element in `classes` has both `classname` and `value` set.';
+      }
+
+      // include suffix separator in selector if a suffix is included
+      @if $suffix != '' {
+        $suffix-separator: '-';
+      }
+
+      $class-selector: $class-prefix + $classname + $suffix-separator + $suffix;
+
+      .#{$class-selector} {
+        #{$property}: #{$value};
+      }
+      // stylelint-enable max-nesting-depth
+    }
+  }
+}
