@@ -46,7 +46,7 @@ const ControlCenter: FC<ControlCenterProps> = () => {
       data-testid="ControlCenter"
     >
       <div className="mb5">
-        <div className="ui-display-flex ui-items-center">
+        <div className="ui-display-flex">
           <Button
             className="keylight-power-button p3"
             variant={isKeylightActive ? 'contained' : 'outlined'}
